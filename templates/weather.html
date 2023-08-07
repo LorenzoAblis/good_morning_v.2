@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Weather</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/common_styles.css">
+    <link rel="stylesheet" href="../static/css/weather_styles.css">
+    <script src="../static/js/common_scripts.js"></script>
+    <script src="../static/js/weather_scripts.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-items">
+                <li class="nav-item"><a href="/" class="nav-item-link">Overview</a></li>
+                <li class="nav-item"><a href="/news" class="nav-item-link">News</a></li>
+                <li class="nav-item"><a href="#weather" class="nav-item-link">Weather</a></li>
+                <li class="nav-item"><a href="#forecast" class="nav-item-link">Forecast</a></li>
+                <li class="nav-item"><time id="current-time"></time></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="weather-section" id="weather">
+            <time id="current-day"></time>
+            <section class="frame weather-frame">
+                <span class="top-weather-data">Temperature: {{ current_weather_data['temperature'] }}</span><br>
+                <div class="weather-column-1">
+                    <span class="weather-data">Description: {{ current_weather_data['weather_description'] }}</span><br>
+                    <span class="weather-data">High/Low: {{ current_weather_data['high_low'] }}</span><br>
+                    <span class="weather-data">Precipiation: {{ current_weather_data['precip'] }}%</span><br>
+                    <span class="weather-data">UV Index: {{ current_weather_data['uv_index'] }} of 11</span><br>
+                    <span class="weather-data">Air Quality: {{ current_weather_data['air_quality'] }}</span><br>
+                    <span class="weather-data">Wind: {{ current_weather_data['wind'] }}</span>
+                </div>
+                <div class="weather-column-2">
+                    <span class="weather-data">Feelslike: {{ current_weather_data['feelslike'] }}</span><br>
+                    <span class="weather-data">Humidity: {{ current_weather_data['humidity'] }}</span><br>
+                    <span class="weather-data">Visibility: {{ current_weather_data['visibility'] }}</span><br>
+                    <span class="weather-data">Pressure: {{ current_weather_data['pressure'] }}</span><br>
+                    <span class="weather-data">Sunrise: {{ current_weather_data['sunrise'] }}</span><br>
+                    <span class="weather-data">Sunset: {{ current_weather_data['sunset'] }}</span>
+                </div>
+            </section>
+        </section>
+        <section class="forecast-section" id="forecast">
+            <section class="forecast-frame">
+                <div class="forecast-column-1">
+                    {% for day in forecast_column_1 %}
+                    <h1 class="day-title">{{ day['day'] }}</h1>
+                    <section class="frame day-frame">
+                        <div class="day-column-1">
+                            <span class="forecast-weather-data">High/Low: {{ day['high_low'] }}</span><br>
+                            <span class="forecast-weather-data">Precipiation: {{ day['precip'] }}</span><br>
+                            <span class="forecast-weather-data">UV Index: {{ day['uv_index'] }} of 11</span>
+                        </div>
+                        <div class="day-column-2">
+                            <span class="forecast-weather-data">Wind: {{ day['wind_speed'] }}</span><br>
+                            <span class="forecast-weather-data">Sunrise: {{ day['sunrise'] }}</span><br>
+                            <span class="forecast-weather-data">Sunset: {{ day['sunset'] }}</span>
+                        </div>
+                    </section>
+                    {% endfor %}
+                </div>
+                <div class="forecast-column-2">
+                    {% for day in forecast_column_2 %}
+                    <h1 class="day-title">{{ day['day'] }}</h1>
+                    <section class="frame day-frame">
+                        <div class="day-column-1">
+                            <span class="forecast-weather-data">High/Low: {{ day['high_low'] }}</span><br>
+                            <span class="forecast-weather-data">Precipiation: {{ day['precip'] }}</span><br>
+                            <span class="forecast-weather-data">UV Index: {{ day['uv_index'] }} of 11</span>
+                        </div>
+                        <div class="day-column-2">
+                            <span class="forecast-weather-data">Wind: {{ day['wind_speed'] }}</span><br>
+                            <span class="forecast-weather-data">Sunrise: {{ day['sunrise'] }}</span><br>
+                            <span class="forecast-weather-data">Sunset: {{ day['sunset'] }}</span>
+                        </div>
+                    </section>
+                    {% endfor %}
+                </div>
+            </section>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Overview</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/common_styles.css">
+    <link rel="stylesheet" href="../static/css/overview_styles.css">
+    <script src="../static/js/common_scripts.js"></script>
+    <script src="../static/js/overview_scripts.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul class="nav-items">
+                <li class="nav-item"><a href="/" class="nav-item-link">Overview</a></li>
+                <li class="nav-item"><a href="/news" class="nav-item-link">News</a></li>
+                <li class="nav-item"><a href="/weather" class="nav-item-link">Weather</a></li>
+                <li class="nav-item"><a href="/weather#forecast" class="nav-item-link">Forecast</a></li>
+                <li class="nav-item"><time id="current-time"></time></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="frame news-frame">
+            <h1 class="frame-title">News</h1>
+            <ul class="article-list">
+                {% for article in overview_data['news'] %}
+                <li><a class="article-title" href={{ article['url'] }} target="_blank">{{ article['title'] }}</a></li><br>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section class="weather-forecast-container">
+            <div class="frame weather-frame">
+                <ul class="weather-list">
+                    <h1 class="frame-title">Weather</h1><br>
+                    <li class="weather-list-item">Temperature: {{ overview_data['weather']['temperature'] }}</li><br>
+                    <li class="weather-list-item">Precipitation: {{ overview_data['weather']['precip'] }}%</li><br>
+                    <li class="weather-list-item">UV Index: {{ overview_data['weather']['uv_index'] }} of 11</li><br>
+                    <li class="weather-list-item">Air Quality: {{ overview_data['weather']['air_quality'] }}</li><br>
+                    <li class="weather-list-item">High/Low: {{ overview_data['weather']['high_low'] }}</li><br>
+                </ul>
+            </div>
+
+            <div class="frame forecast-frame">
+                <h1 class="frame-title">Forecast</h1>
+                <ul class="forecast-list">
+                    {% for day in overview_data['forecast'] %}
+                    <li class="forecast-list-item">{{ day['day'] }}, High/Low: {{ day['high_low'] }}, Precipitation: {{ day['precip'] }}</li><br>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

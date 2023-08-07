@@ -1,0 +1,59 @@
+nav { background: linear-gradient(135deg, hsla(17, 95%, 50%, 1) 0%, hsla(42, 94%, 57%, 1) 82%); }
+
+.news-frame {
+    margin: auto;
+    margin-top: 3vw;
+    width: 95%;
+    min-height: 20%;
+    padding: none;
+    background: linear-gradient(45deg, hsla(228, 17%, 53%, 1) 0%, hsla(229, 28%, 88%, 1) 100%);
+}
+
+.article-list, .forecast-list { list-style: none; }
+
+.article-title {
+    padding-left: 20px;
+    line-height: 1;
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-size: 1.3vw;
+    transition: all 1s;
+}
+
+.article-title:hover { font-size: 1.5vw; color: black; }
+
+.weather-forecast-container {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width: 95%;
+    margin-top: 4vw;
+    padding: 20px;
+}
+
+.weather-frame { 
+    width: 40%; 
+    background: linear-gradient(45deg, hsla(236, 93%, 65%, 1) 0%, hsla(195, 100%, 53%, 1) 100%); 
+}
+
+.forecast-frame { 
+    width: 55%; 
+    background: linear-gradient(45deg, hsla(236, 93%, 65%, 1) 0%, rgb(214, 184, 243) 100%); 
+}
+
+.weather-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    align-items: center;
+}
+
+.weather-list-item, .forecast-list-item {
+    padding-left: 20px;
+    color: white;
+    font-size: 1.5vw;
+    transition: color 0.75s;
+}
+
+.weather-list-item:hover, .forecast-list-item:hover { color: black; }
